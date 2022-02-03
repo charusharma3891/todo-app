@@ -33,30 +33,47 @@ ABC
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">
-          Date of birth
+        <label for="noteTitle">
+          Title
+        </label>
+        <input type="text" class="form-control" id="noteTitle"/>
+        <br />
+
+        <label for="dateOfTask">
+          Date &amp; Time
         </label>
         <div class="input-group">
-<input id="dateOfBirth"
-       class="form-control"
-       placeholder="yyyy-mm-dd"
-       name="dp" ngbDatepicker
-       #dp="ngbDatepicker">
-<div class="input-group-append">
-  <button class="btn
+          <input id="dateOfTask"
+                 class="form-control"
+                 placeholder="yyyy-mm-dd"
+                 name="dp" ngbDatepicker
+                 #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn
                 btn-outline-secondary calendar"
-          (click)="dp.toggle()"
-          type="button">
-  </button>
-</div>
-</div>
+                    (click)="dp.toggle()"
+                    type="button">
+            </button>
+          </div>
+          <br />
+          <input type="time" />
+        </div>
+
+        <br />
+
+        <label for="noteSummary">
+          Summary
+        </label>
+        <input type="text" class="form-control" id="noteSummary" />
+        <br />
+
       </div>
     </form>
   </div>
   <div class="modal-footer">
     <button type="button"
             class="btn btn-outline-dark"
-            (click)="modal.close('Save click')">
+            (click)="saveNote(addNote,'')">
       Save
     </button>
   </div>

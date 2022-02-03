@@ -11,17 +11,13 @@ export class AppComponent {
   title = 'todoapp';
   closeResult = '';
   constructor(private addNoteModal: NgbModal) { }
-  modalOpen = false;
+
   openAddNote(content: any) {
-    if (this.modalOpen) return;
-    this.modalOpen = true;
     this.addNoteModal.open(content).result.then((result: any) => {
-        this.modalOpen = false;
-        this.closeResult = `Closed with: ${result}`;
+      this.closeResult = `Closed with: ${result}`;
     }, (reason: any) => {
-        this.modalOpen = false;
-        this.closeResult =
-          `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult =
+        `Dismissed ${this.getDismissReason(reason)}`;
     });
 
   }
@@ -34,6 +30,13 @@ export class AppComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  saveNote(content: any, title: string) {
+    this.addNoteModal.dismissAll('Save click')
+    //save note details in local storage
+    localStorage.setItem("Title", title);
+    alert(localStorage.getItem("Title"));
   }
 }
 
